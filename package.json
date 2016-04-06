@@ -1,0 +1,28 @@
+{
+  "name": "chotot",
+  "version": "1.0.0",
+  "description": "Get Post Chotot",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('Hello');"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellohello101093/chotot.git"
+  },
+  "keywords": [
+    "chotot"
+  ],
+  "author": "Kudo Kun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellohello101093/chotot/issues"
+  },
+  "homepage": "https://github.com/hellohello101093/chotot#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "express": "^4.13.4",
+    "request": "^2.69.0"
+  }
+}

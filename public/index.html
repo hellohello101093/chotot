@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<title>GET POST CHOTOT.VN</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="custome.js"></script>
+</head>
+
+<body>
+    <div class="select-area-header">
+        <form method="post" id="form-load">
+        <div class="fix">
+            <div class="title-select-area f-l">
+                <span>Lựa chọn vùng miền</span>
+            </div>
+            <div class="list-select-area f-l">
+                <select id="list-area" name="link">
+                    <option value="ha-noi">Hà Nội</option>
+                    <option value="tp-ho-chi-minh">TP Hồ Chí Minh</option>
+                    <option value="dong-bac-bo">Đông Bắc Bộ</option>
+                    <option value="tay-bac-bo">Tây Bắc Bộ</option>
+                    <option value="cac-tinh-lan-can-ha-noi">Các tỉnh lân cận Hà Nội</option>
+                    <option value="hai-phong-nam-dinh-thai-binh">Hải Phòng Nam Định Thái Bình</option>
+                    <option value="thanh-nghe-tinh">Thanh Nghệ Tĩnh</option>
+                    <option value="binh-tri-thua-thien">Bình Trị Thừa Thiên</option>
+                    <option value="quang-nam-da-nang">Quảng Nam Đà Nẵng</option>
+                    <option value="tay-nguyen">Tây Nguyên</option>
+                    <option value="nam-trung-bo">Nam Trung Bộ</option>
+                    <option value="dong-nam-bo">Đông Nam Bộ</option>
+                    <option value="can-tho-tay-nam-bo">Cần Thơ - Tây Nam Bộ</option>
+                </select>
+            </div>
+            <div class="time-update f-l">
+                <div class="title-time-update f-l">
+                    <span>Thời gian tự động cập nhật: </span>
+                </div>
+                <div class="select-time-update f-l">
+                    <select id="time_post" name="time">
+                        <option value="30000">30 giây</option>
+                        <option value="60000">1 phút</option>
+                        <option value="120000">2 phút</option>
+                        <option value="180000">3 phút</option>
+                    </select>
+                </div>
+            </div>
+            <div class="bt-select f-r">
+                <button id="select" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="clr"></div>
+    <div class="data-show">
+        
+    </div>
+    <div class="clr"></div>
+</body>
+</html>
