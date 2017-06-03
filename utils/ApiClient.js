@@ -26,7 +26,9 @@ export default class ApiClient {
             }
           } else {
             reject({
-              kaka: 'ssss'
+              error: {
+                message: 'Có lỗi xảy ra, vui lòng thử lại'
+              }
             });
           }
         });

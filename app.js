@@ -1,2 +1,2 @@
 require("babel-register")();
-require("./runTask.js");
+require("./index.js");
