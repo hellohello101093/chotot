@@ -6,6 +6,7 @@ import ExportCSV from '../tasks/ExportCSV.js';
 import Paging from '../tasks/Paging.js';
 import CATEGORIES from '../sources/timviecnhanh/category.json';
 import { params } from '../config';
+import { sleep } from './utils';
 
 const hostName = 'https://www.timviecnhanh.com/';
 
@@ -23,28 +24,37 @@ class TimVietNhanh {
     }
 
     getAllItemLink() {
-      let links = [];
-      for (let i = 0; i < CATEGORIES.length; i++) {
+      const start = 6;
+      let sumTotalPage = 0;
+      let previousTotalPage = 0;
+      for (let i = 6; i < CATEGORIES.length; i++) {
         const currentCategory = CATEGORIES[i];
+        sumTotalPage += previousTotalPage;
         const totalPage = Paging.getTotalPage(currentCategory.total, params.timviecnhanh.perPage);
-        if (totalPage < 10) {
+        previousTotalPage = totalPage;
+        const timeout = sumTotalPage * 5000;
+        setTimeout(() => {
+          let links = [];
+          console.log(`Exporting Category ${i}...`);
           for (let j = 1; j <= totalPage; j++) {
             const url = `${currentCategory.url}?page=${j}`;
             setTimeout(() => {
               DataCrawler.run(url).then((pageData) => {
                 const listUrl = FormatData.getListUrlTimViecNhanh(pageData.text, links);
                 links = links.concat(listUrl);
-                fs.writeFile("/Users/huynguyen/chithu/chotot/sources/timviecnhanh/listUrl.json", JSON.stringify(links), (err) => {
+                fs.writeFile(`/Users/huynguyen/chithu/chotot/sources/timviecnhanh/listUrlCate${i}.json`, JSON.stringify(links), (err) => {
                     if(err) {
                         return Promise.reject(err);
                     }
-                    console.log('write done');
                     return Promise.resolve('Export Urls Done');
                 });
               });
+              if (j === totalPage) {
+                console.log(`Export Category ${i} done!!!`);
+              }
             }, j * 5000);
           }
-        }
+        }, timeout);
       }
     }
 }
