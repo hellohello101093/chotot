@@ -24,10 +24,10 @@ class TimVietNhanh {
     }
 
     getAllItemLink() {
-      const start = 6;
+      const start = 0;
       let sumTotalPage = 0;
       let previousTotalPage = 0;
-      for (let i = 6; i < CATEGORIES.length; i++) {
+      for (let i = start; i < CATEGORIES.length; i++) {
         const currentCategory = CATEGORIES[i];
         sumTotalPage += previousTotalPage;
         const totalPage = Paging.getTotalPage(currentCategory.total, params.timviecnhanh.perPage);
