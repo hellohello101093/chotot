@@ -1,12 +1,14 @@
 import superagent from 'superagent';
+require('superagent-proxy')(superagent);
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
+const proxy = 'http://168.63.43.102:3128';
 
 export default class ApiClient {
   constructor(basePath) {
     methods.forEach((method) => {
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](basePath + path);
+        const request = superagent[method](basePath + path).proxy(proxy);
         if (params) {
           request.query(params);
         }

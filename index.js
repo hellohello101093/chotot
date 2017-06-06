@@ -4,7 +4,7 @@ let site = process.argv[2] || "";
 
 switch (site) {
   case 'timviecnhanh':
-    TimViecNhanh.getAllItemLink();
+    TimViecNhanh.test();
     break;
   case 'muabannet':
     break;

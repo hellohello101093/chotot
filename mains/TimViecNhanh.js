@@ -7,6 +7,7 @@ import Paging from '../tasks/Paging.js';
 import CATEGORIES from '../sources/timviecnhanh/category.json';
 import { params } from '../config';
 import { sleep } from './utils';
+import listDetailUrl from '../sources/timviecnhanh/listUrlCate55.json';
 
 const hostName = 'https://www.timviecnhanh.com/';
 
@@ -55,6 +56,13 @@ class TimVietNhanh {
             }, j * 5000);
           }
         }, timeout);
+      }
+    }
+
+    test() {
+      for (let i = 0; i < listDetailUrl.length; i++) {
+        const url = listDetailUrl[i];
+        DataCrawler.run(url);
       }
     }
 }
