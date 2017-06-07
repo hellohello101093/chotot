@@ -7,7 +7,6 @@ import Paging from '../tasks/Paging.js';
 import CATEGORIES from '../sources/timviecnhanh/category.json';
 import { params } from '../config';
 import { sleep } from './utils';
-import listDetailUrl from '../sources/timviecnhanh/listUrlCate55.json';
 
 const hostName = 'https://www.timviecnhanh.com/';
 
@@ -59,11 +58,21 @@ class TimVietNhanh {
       }
     }
 
-    test() {
+    test(num, index) {
+      const listDetailUrl = require(`../sources/error/timviecnhanh${num}.json`);
+      let previousData = [];
+      const size = listDetailUrl.length;
       for (let i = 0; i < listDetailUrl.length; i++) {
         const url = listDetailUrl[i];
-        DataCrawler.run(url);
+        DataCrawler.run(url, num).then((pageData) => {
+          if (pageData) {
+            previousData = FormatData.getWorkDetailTimViecNhanh(pageData.text, previousData);
+          }
+        });
       }
+      setTimeout(() => {
+        ExportCSV.exportCSV(previousData, `/Users/huynguyen/chithu/chotot/datas/error-${num}`);
+      }, 60000 * (size / 600 < 1 ? 1 : size / 600));
     }
 }
 export default new TimVietNhanh();
